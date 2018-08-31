@@ -149,6 +149,7 @@ define( 'MD5', 3 );
 define( 'LDAP', 4 );
 define( 'BASIC_AUTH', 5 );
 define( 'HTTP_AUTH', 6 );
+define( 'PHPBB', 7 );
 
 # file upload methods
 define( 'DISK', 1 );
@@ -563,6 +564,7 @@ define( 'LOG_DATABASE', 32 );       # logging for Database
 define( 'LOG_WEBSERVICE', 64 );     # logging for Web Service Requests
 define( 'LOG_EMAIL_VERBOSE', 128 ); # logging for verbose email internals
 define( 'LOG_PLUGIN', 256 );        # logging for plugins
+define( 'LOG_PHPBB', 256 );         # logging for PhpBB
 
 # COLUMNS_TARGET_*
 define( 'COLUMNS_TARGET_VIEW_PAGE', 1 );

@@ -43,6 +43,7 @@ $g_log_levels = array(
 	LOG_FILTERING => 'FILTER',
 	LOG_AJAX => 'AJAX',
 	LOG_LDAP => 'LDAP',
+	LOG_PHPBB => 'PHPBB',
 	LOG_DATABASE => 'DB',
 	LOG_WEBSERVICE => 'WEBSERVICE',
 	LOG_PLUGIN => 'PLUGIN',

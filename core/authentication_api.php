@@ -61,6 +61,7 @@ require_api( 'string_api.php' );
 require_api( 'tokens_api.php' );
 require_api( 'user_api.php' );
 require_api( 'utility_api.php' );
+require_api( 'phpbb_api.php' );
 
 # @global array $g_script_login_cookie
 $g_script_login_cookie = null;
@@ -411,6 +412,8 @@ function auth_auto_create_user( $p_username, $p_password ) {
 		$t_auto_create = true;
 	} else if( $t_login_method == LDAP && ldap_authenticate_by_username( $p_username, $p_password ) ) {
 		$t_auto_create = true;
+	} else if ( PHPBB == $t_login_method && phpbb_authenticate_by_username( $p_username, $p_password ) ) {
+		$t_auto_create = true;
 	} else {
 		$t_auto_create = false;
 	}
@@ -712,6 +715,10 @@ function auth_does_password_match( $p_user_id, $p_test_password ) {
 
 	if( LDAP == $t_configured_login_method ) {
 		return ldap_authenticate( $p_user_id, $p_test_password );
+	}
+
+	if( PHPBB == $t_configured_login_method ) {
+		return phpbb_authenticate( $p_user_id, $p_test_password );
 	}
 
 	if( !auth_can_use_standard_login( $p_user_id ) ) {
