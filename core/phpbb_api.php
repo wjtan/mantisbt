@@ -111,8 +111,7 @@ function phpbb_email_from_username( $p_username ) {
   }
   
   $t_phpbb_prefix = config_get( 'phpbb_prefix' );
-  $t_username_clean = utf8_clean_string($p_username);
-  $t_username = $t_conn->real_escape_string($t_username_clean);
+  $t_username = $t_conn->real_escape_string(strtolower($p_username));
   $t_sql = 'SELECT user_email FROM ' . $t_phpbb_prefix . "users WHERE user_type <> 2 AND username_clean = '$t_username'";
   $t_result = $t_conn->query($t_sql);
 

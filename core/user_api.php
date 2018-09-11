@@ -57,6 +57,7 @@ require_api( 'project_hierarchy_api.php' );
 require_api( 'string_api.php' );
 require_api( 'user_pref_api.php' );
 require_api( 'utility_api.php' );
+require_api( 'phpbb_api.php' );
 
 use Mantis\Exceptions\ClientException;
 
@@ -921,7 +922,9 @@ function user_get_field( $p_user_id, $p_field_name ) {
  */
 function user_get_email( $p_user_id ) {
 	$t_email = '';
-	if( LDAP == config_get_global( 'login_method' ) && ON == config_get( 'use_ldap_email' ) ) {
+	if( PHPBB == config_get_global( 'login_method' ) ) {
+		$t_email = phpbb_email( $p_user_id );
+	} else if( LDAP == config_get_global( 'login_method' ) && ON == config_get( 'use_ldap_email' ) ) {
 		$t_email = ldap_email( $p_user_id );
 	}
 	if( is_blank( $t_email ) ) {
